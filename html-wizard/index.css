@@ -1,0 +1,70 @@
+html {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+:root {
+  --gray: #7b7f83;
+  --white: #ffffff;
+  --blue: #0932e7;
+}
+.content {
+  width: 100%;
+  display: block;
+}
+.wizard {
+  display: flex;
+  gap: 0.5rem;
+}
+.wizard .step {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  gap: 0.5rem;
+}
+.wizard .step .step-content {
+  border-radius: 50%;
+  display: flex;
+  width: 2rem;
+  height: 2rem;
+  align-items: center;
+  justify-content: center;
+}
+.step-content span {
+  outline: 2px solid var(--white);
+  border-radius: 50%;
+  width: 1.5rem;
+  height: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.wizard .step .progress {
+  height: 4px;
+  flex: 1;
+  border-radius: 1rem;
+}
+
+.wizard .step.waiting .step-content {
+  background-color: var(--gray);
+  color: var(--white);
+}
+.wizard .step.waiting .progress,
+.wizard .step.in-progress .progress {
+  background-color: var(--gray);
+}
+
+.wizard .step.in-progress .step-content,
+.wizard .step.complete .step-content {
+  background-color: var(--blue);
+  color: var(--white);
+}
+.wizard .step.complete .progress {
+  background: linear-gradient(var(--blue) 0 0) 0/0% no-repeat #535353;
+  animation: step-progress 1s linear;
+  animation-fill-mode: forwards;
+}
+@keyframes step-progress {
+  100% {
+    background-size: 110%;
+  }
+}
